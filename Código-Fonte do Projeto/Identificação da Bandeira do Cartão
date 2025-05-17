@@ -1,0 +1,16 @@
+def get_card_brand(card_number: str) -> str:
+    card_prefix = card_number[:2]
+
+    brands = {
+        "34": "American Express",
+        "37": "American Express",
+        "4": "Visa",
+        "51": "Mastercard",
+        "52": "Mastercard",
+        "53": "Mastercard",
+        "54": "Mastercard",
+        "55": "Mastercard",
+        "63": "Elo"
+    }
+
+    return brands.get(card_prefix, "Desconhecido")
