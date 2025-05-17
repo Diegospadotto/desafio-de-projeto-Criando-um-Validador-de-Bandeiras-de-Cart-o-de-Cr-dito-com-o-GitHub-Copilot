@@ -1,0 +1,14 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class CardValidationRequest(BaseModel):
+    card_number: str
+
+@app.post("/validate/")
+def validate_card(data: CardValidationRequest):
+    is_valid = luhn_algorithm(data.card_number)
+    card_brand = get_card_brand(data.card_number)
+    
+    return {"valid": is_valid, "card_type": card_brand}
